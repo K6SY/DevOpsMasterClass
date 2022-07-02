@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-sm-6 col-md-5 col-lg-4">
+    <div class="card" >
+        <img src="{{url_for('static', filename='image/k6sy.png')}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Kalidou SY aka K6SY</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Site Reliability Engineer</li>
+            <li class="list-group-item">Cloud and Automation Nerd</li>
+            <li class="list-group-item">Innovation enthousiast</li>
+            <li class="list-group-item">Formateur DevOps & Python</li>
+        </ul>
+        <div class="card-body">
+            <a href="https://world.k6sy.info" class="card-link">Website</a>
+            <a href="https://www.linkedin.com/in/kalidou-sy-59a48665/" class="card-link">Linkedin</a>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-md-7 col-lg-8">
+    <img src="{{url_for('static', filename='image/certification.png')}}" width="100%"/>
+</div>
+
+{% endblock %}
