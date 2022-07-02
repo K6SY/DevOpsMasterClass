@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="container-tab" data-toggle="tab" href="#container" role="tab" aria-controls="container" aria-selected="true">Containerization</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="ci-tab" data-toggle="tab" href="#ci" role="tab" aria-controls="ci" aria-selected="false">Intégration Continue </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="cd-tab" data-toggle="tab" href="#cd" role="tab" aria-controls="cd" aria-selected="false">Continuous Delivery / Continuous Deployment</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="kubernetes-tab" data-toggle="tab" href="#kubernetes" role="tab" aria-controls="kubernetes" aria-selected="false">Kubernetes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="terraform-tab" data-toggle="tab" href="#terraform" role="tab" aria-controls="terraform" aria-selected="false">Terraform</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="container" role="tabpanel" aria-labelledby="container-tab">
+            <hr>
+            <p>Objectif : Comprendre le mécanismes des conteneurs</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">1 - Introduction aux containers Docker</li>
+                <li class="list-group-item">2 - Le cycle de vie des conteneurs et quelques commandes de base</li>
+                <li class="list-group-item">3 - Dockerfile et gestion d’images docker</li>
+                <li class="list-group-item">4 - Dockeriser une application simple application Flask</li>
+                <li class="list-group-item">5 - Scans vulnérabilités des images et des configurations</li>
+                <li class="list-group-item">6 - Docker Compose</li>
+            </ul>
+
+        </div>
+        <div class="tab-pane fade" id="ci" role="tabpanel" aria-labelledby="ci-tab">
+            <hr>
+            <p>Objectif : Comprendre le mécanismes du CI</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">1 - Présentation du CI</li>
+                <li class="list-group-item">2 - A la découverte de git</li>
+                <li class="list-group-item">3 - Notions de Branch, Pull Request, Merge, Rebase</li>
+                <li class="list-group-item">4 - Pratique des principes git sur un simple projet springBoot</li>
+                <li class="list-group-item">5 - A la découverte de Jenkins</li>
+                <li class="list-group-item">6 - Déploiement de Jenkins sur des containers</li>
+                <li class="list-group-item">7 - Continuous Build / Continuous Testing</li>
+                <li class="list-group-item">8 - Découverte de Jenkinsfile</li>
+                <li class="list-group-item">9 - Création de pipeline simple & multibranche</li>
+                <li class="list-group-item">10 - Automatisation des build et des tests</li>
+            </ul>
+
+        </div>
+        <div class="tab-pane fade" id="cd" role="tabpanel" aria-labelledby="cd-tab">
+            <hr>
+            <p>Objectif : Comprendre le mécanismes du CD</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">1 - Release Management</li>
+                <li class="list-group-item">2 - Continuous Delivery</li>
+                <li class="list-group-item">3 - All-in-one Deployment</li>
+                <li class="list-group-item">4 - Blue Green Deployment</li>
+                <li class="list-group-item">5 - Canary Deployment</li>
+                <li class="list-group-item">6 - A la découverte d’Ansible</li>
+                <li class="list-group-item">7 - Ansible inventaire &  commandes in-line</li>
+                <li class="list-group-item">8 - Task, role & playbook Ansible</li>
+                <li class="list-group-item">9 - continuous Delivery avec Ansible</li>
+                <li class="list-group-item">10 - Continuous Deployment avec Ansible</li>
+            </ul>
+
+        </div>
+        <div class="tab-pane fade" id="kubernetes" role="tabpanel" aria-labelledby="kubernetes-tab">
+            <hr>
+            <p>Objectif : Comprendre le mécanismes des orchestrateurs de containers</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">1 - Présentation de Kubernetes</li>
+                <li class="list-group-item">2 - Architecture et composants de Kubernetes</li>
+                <li class="list-group-item">3 - Mise en place d’un cluster k8s</li>
+                <li class="list-group-item">4 - L’utilitaire Kubectl et usage de quelques commandes</li>
+                <li class="list-group-item">5 - Les objets Kubernetes (Pods, Service, Secret, etc.)</li>
+                <li class="list-group-item">6 - Déploiement d’une application Flask sur kubernetes</li>
+                <li class="list-group-item">7 - Pratique des mécanismes d’auto-scaling</li>
+                <li class="list-group-item">8 - Déploiement continue sur une infra Kubernetes</li>
+                <li class="list-group-item">9 - Introduction au GitOps</li>
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="terraform" role="tabpanel" aria-labelledby="terraform-tab">
+            <hr>
+            <p>Objectif : Comprendre le mécanismes de l'IAC</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">1 - Principe de l’Infrastructure As Code (IAC)</li>
+                <li class="list-group-item">2 - Présentation de Terraform</li>
+                <li class="list-group-item">3 - Terraform Workflow</li>
+                <li class="list-group-item">4 - Découverte des concepts clés : Providers, modules, backend</li>
+                <li class="list-group-item">5 - Déployer quelques artefacts Kubernetes avec Terraform</li>
+            </ul>
+        </div>
+    </div>       
+{% endblock %}
