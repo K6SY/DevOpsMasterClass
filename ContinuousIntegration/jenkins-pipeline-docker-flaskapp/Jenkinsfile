@@ -9,25 +9,21 @@ pipeline {
                 }
             }
         }
-        stage('Tag image') {
-            steps {
-                echo 'Testing..'
-            }
-        }
         stage('Run Docker Container') {
             steps {
-                echo 'Deploying....'
+                sh 'docker run -d -p 8080:8080 -name test-container simple-flask-app:latest'
             }
         }
         stage('Test Docker Conntainer') {
             steps {
-                echo 'Deploying....'
+               sh 'curl http://localhost:8080'
             }
         }
 
         stage('Clean Environment') {
             steps {
-                echo 'Deploying....'
+                sh 'docker stop test-container'
+                sh 'docker rm test-container'
             }
         }
     }
