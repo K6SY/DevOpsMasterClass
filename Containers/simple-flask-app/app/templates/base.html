@@ -1,0 +1,51 @@
+<html>
+    <head>
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    {% endblock %}
+    </head>
+    <body>
+      
+      <div class="container">
+        <div style="background-color: #c9e265;">
+          <a class="navbar-brand" href="#" >
+            <img src="{{url_for('static', filename='image/logo.png')}}"  alt="">
+          </a>
+        </div>
+        <br><br>
+        <nav class="navbar navbar-expand-lg  navbar-light" style="background-color: black;">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{  url_for('HomePage') }}" style=" color: white">Home |<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{  url_for('ProgrammePage') }}" style=" color: white">Programmes |</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{  url_for('AboutPage') }}" style=" color: white">A propos |</a>
+              </li>
+              
+            </ul>
+          </div>
+        </nav>
+          <div class="container container-fluid">
+            <hr>
+            <div class="row">
+              
+              {% block content %}
+                
+              {% endblock %}
+            </div>
+          </div>
+      </div>
+    </body>
+    <script language="JavaScript" type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"> </script>
+    <script language="JavaScript" type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"> </script>
+    <script language="JavaScript" type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"> </script>
+    </html>
