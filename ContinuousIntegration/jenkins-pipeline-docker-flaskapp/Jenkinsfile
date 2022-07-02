@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8080:8080 -name test-container simple-flask-app:latest'
+                sh 'docker run -d -p 8080:8080 --name test-container simple-flask-app:latest'
             }
         }
         stage('Test Docker Conntainer') {
