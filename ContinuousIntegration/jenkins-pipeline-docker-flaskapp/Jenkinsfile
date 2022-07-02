@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'cd Containers/simple-flask-app'
-                sh 'docker build -t simple-flask-app:latest .'
+                dir("Containers/simple-flask-app") {
+                    sh 'docker build -t simple-flask-app:latest .'
+                }
             }
         }
         stage('Tag image') {
