@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    tools { 
+        maven 'maven-3.8.6'
+        jdk 'jdk18'
+    }
+
+    stages {
+        stage('Clean') {
+            steps {
+                dir("Containers/maven-hello-word") {
+                    sh 'echo test'
+                }
+            }
+        }
+        stage('Compile') {
+            steps {
+                dir("Containers/maven-hello-word") {
+                    sh 'echo test'
+                }
+            }
+        }
+        stage('Clean Build') {
+            steps {
+                dir("Containers/maven-hello-word") {
+                    sh 'echo test'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir("Containers/maven-hello-word") {
+                    sh 'echo test'
+                }
+            }
+        }
+        stage('Package') {
+            steps {
+                dir("Containers/maven-hello-word") {
+                    sh 'echo test'
+                }
+            }
+        }
+    }
+}
