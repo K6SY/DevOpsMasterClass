@@ -9,35 +9,35 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                dir("ContinuousIntegration/maven-hello-word") {
+                dir("ContinuousIntegration/maven-hello-world") {
                     sh 'mvn clean'
                 }
             }
         }
         stage('Compile') {
             steps {
-                dir("ContinuousIntegration/maven-hello-word") {
+                dir("ContinuousIntegration/maven-hello-world") {
                     sh 'mvn compile'
                 }
             }
         }
         stage('Clean Build') {
             steps {
-                dir("ContinuousIntegration/maven-hello-word") {
+                dir("ContinuousIntegration/maven-hello-world") {
                     sh 'mvn build'
                 }
             }
         }
         stage('Test') {
             steps {
-                dir("ContinuousIntegration/maven-hello-word") {
+                dir("ContinuousIntegration/maven-hello-world") {
                     sh 'mvn test'
                 }
             }
         }
         stage('Package') {
             steps {
-                dir("ContinuousIntegration/maven-hello-word") {
+                dir("ContinuousIntegration/maven-hello-world") {
                     sh 'mvn package'
                 }
             }
