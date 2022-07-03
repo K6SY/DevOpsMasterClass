@@ -9,10 +9,20 @@ pipeline {
                 }
             }
         }
+        stage('Prepare Environement') {
+            container_name = sh (
+                script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
+                returnStdout: true
+            ).trim()
+            when (container_name == 'test-container')
+            steps {
+                sh 'docker rm test-container --force'
+            }
+        }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run --rm -d -p 8090:8080 --name test-container simple-flask-app:latest'
+                sh 'docker run -d -p 8090:8080 --name test-container simple-flask-app:latest'
                 sh 'docker wait test-container'
             }
         }
