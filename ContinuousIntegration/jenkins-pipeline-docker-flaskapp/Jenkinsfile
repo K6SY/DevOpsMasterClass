@@ -10,14 +10,17 @@ pipeline {
             }
         }
         stage('Prepare Environement') {
-            container_name = sh (
-                script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
-                returnStdout: true
-            ).trim()
-            when (container_name == 'test-container')
             steps {
-                sh 'docker rm test-container --force'
+                container_name = sh (
+                    script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
+                    returnStdout: true
+                )
+                if (container_name == 'test-container')
+                {
+                    sh 'docker rm test-container --force'
+                }
             }
+            
         }
 
         stage('Run Docker Container') {
