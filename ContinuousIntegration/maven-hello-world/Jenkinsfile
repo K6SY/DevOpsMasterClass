@@ -3,42 +3,42 @@ pipeline {
 
     tools { 
         maven 'maven-3.8.6'
-        jdk 'jdk18'
+        jdk 'jdk17'
     }
 
     stages {
         stage('Clean') {
             steps {
                 dir("Containers/maven-hello-word") {
-                    sh 'echo test'
+                    sh 'mvn clean'
                 }
             }
         }
         stage('Compile') {
             steps {
                 dir("Containers/maven-hello-word") {
-                    sh 'echo test'
+                    sh 'mvn compile'
                 }
             }
         }
         stage('Clean Build') {
             steps {
                 dir("Containers/maven-hello-word") {
-                    sh 'echo test'
+                    sh 'mvn build'
                 }
             }
         }
         stage('Test') {
             steps {
                 dir("Containers/maven-hello-word") {
-                    sh 'echo test'
+                    sh 'mvn test'
                 }
             }
         }
         stage('Package') {
             steps {
                 dir("Containers/maven-hello-word") {
-                    sh 'echo test'
+                    sh 'mvn package'
                 }
             }
         }
