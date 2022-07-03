@@ -56,6 +56,13 @@ pipeline {
 			}
 		}
 
+        stage('Tag Image') {
+
+			steps {
+				sh 'docker tag simple-flask-app:latest kalidousy/simple-flask-app:latest'
+			}
+		}
+
 		stage('Image Delivery') {
 
 			steps {
