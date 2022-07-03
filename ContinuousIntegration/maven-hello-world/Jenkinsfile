@@ -36,7 +36,6 @@ pipeline {
             }
         }
     }
-    
     post {
         always {
             archiveArtifacts artifacts: 'ContinuousIntegration/maven-hello-world/target/diambar-1.0-SNAPSHOT.jar', onlyIfSuccessful: true
