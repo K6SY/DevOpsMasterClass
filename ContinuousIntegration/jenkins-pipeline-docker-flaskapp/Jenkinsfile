@@ -14,6 +14,15 @@ pipeline {
             {
                 script {
                     containerName = sh(returnStdout: true, script: "docker ps -a -f 'name=test-container' --format '{{.Names}}'").trim()
+                    if(containerName == "test-container")
+                    {
+                        sh 'docker rm test-container --force'
+                        sh "echo 'Nettoyage environnement OK'"
+                    }
+                    else
+                    {
+                        sh "echo 'Ennvironnement OK'"
+                    }
                 }
             }
         }
