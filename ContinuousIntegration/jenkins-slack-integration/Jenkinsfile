@@ -48,7 +48,7 @@ pipeline {
     }
     post {
         success {
-            slackSend "A new version of simple-app-flask is succesful build - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            slackSend (message="A new version of simple-app-flask is succesful build - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
         }
     }
 }
