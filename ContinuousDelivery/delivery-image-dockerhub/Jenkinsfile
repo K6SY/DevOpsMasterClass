@@ -33,7 +33,7 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8090:8080 --name test-container kalidousy/simple-flask-app:latest'
+                sh 'docker run -d -p 8090:8080 --name test-container simple-flask-app:latest'
                 sh 'sleep 15s'
             }
         }
