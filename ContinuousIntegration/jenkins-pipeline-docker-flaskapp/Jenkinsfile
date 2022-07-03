@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    container_name = sh (
-        script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
-        returnStdout: true
-    )
     stages {
         stage('Build Docker Image') {
             steps {
@@ -14,13 +10,15 @@ pipeline {
             }
         }
         stage('Prepare Environement') {
-            steps {
-                if (container_name == 'test-container')
-                {
-                    sh 'docker rm test-container --force'
-                }
+            container_name = sh (
+                script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
+                returnStdout: true
+            )
+            When{container_name == 'test-container'}
+            steps 
+            {
+                sh 'docker rm test-container --force'
             }
-            
         }
 
         stage('Run Docker Container') {
