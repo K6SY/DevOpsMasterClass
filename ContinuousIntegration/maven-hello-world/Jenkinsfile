@@ -21,13 +21,6 @@ pipeline {
                 }
             }
         }
-        stage('Clean Build') {
-            steps {
-                dir("ContinuousIntegration/maven-hello-world") {
-                    sh 'mvn build'
-                }
-            }
-        }
         stage('Test') {
             steps {
                 dir("ContinuousIntegration/maven-hello-world") {
