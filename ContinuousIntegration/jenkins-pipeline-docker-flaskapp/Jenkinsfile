@@ -12,12 +12,10 @@ pipeline {
         stage('Prepare Environement') {
             steps 
             {
-                step{
-                    container_name = sh (
-                        script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
-                        returnStdout: true
-                    )
-                }
+                def container_name = sh (
+                    script: 'docker ps -a -f \'name=^test-container$\' --format \'{{.Names}}\'',
+                    returnStdout: true
+                )
             }
         }
 
