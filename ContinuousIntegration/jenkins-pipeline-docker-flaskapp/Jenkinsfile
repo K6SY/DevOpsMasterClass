@@ -10,9 +10,11 @@ pipeline {
             }
         }
         stage('Prepare Environement') {
-            steps 
+            steps
             {
-                containerName = sh(returnStdout: true, script: "docker ps -a -f 'name=test-container' --format '{{.Names}}'").trim()
+                script {
+                    containerName = sh(returnStdout: true, script: "docker ps -a -f 'name=test-container' --format '{{.Names}}'").trim()
+                }
             }
         }
 
