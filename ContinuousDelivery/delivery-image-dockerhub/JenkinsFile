@@ -59,7 +59,8 @@ pipeline {
 		stage('Image Delivery') {
 
 			steps {
-				sh 'docker push kalidousy/simple-flask-app:latest'
+				sh 'docker push kalidousy/simple-flask-app:latest
+                '
 			}
 		}
     }
