@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                dir("Containers/simple-flask-app") {
+                    sh 'docker build -t simple-flask-app:latest .'
+                }
+            }
+        }
+        stage('Prepare Environement') {
+            steps
+            {
+                script {
+                    containerName = sh(returnStdout: true, script: "docker ps -a -f 'name=test-container' --format '{{.Names}}'").trim()
+                    if(containerName == "test-container")
+                    {
+                        sh 'docker rm test-container --force'
+                        sh "echo 'Nettoyage environnement OK'"
+                    }
+                    else
+                    {
+                        sh "echo 'Ennvironnement OK'"
+                    }
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -d -p 8090:8080 --name test-container simple-flask-app:latest'
+                sh 'sleep 15s'
+            }
+        }
+        stage('Test Docker Container') {
+            steps {
+               sh 'curl http://localhost:8090'
+            }
+        }
+
+        stage('Clean Environment') {
+            steps {
+                sh 'docker stop test-container'
+                sh 'docker rm test-container'
+            }
+        }
+    }
+    post {
+        success {
+            slackSend message:"A new version of simple-app-flask is succesful build - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+    }
+}
