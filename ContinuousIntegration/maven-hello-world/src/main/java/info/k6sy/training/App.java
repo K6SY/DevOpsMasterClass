@@ -1,7 +1,7 @@
 package info.k6sy.training;
 
 /**
- * Hello world!
+ * Class Hello world: Java Example
  */
 public class App
 {
