@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  php-apache-environment:
+    container_name: webserver
+    image: php:8.2-rc-apache
+    volumes:
+      - ./app:/var/www/html/
+    ports:
+      - 8000:80
