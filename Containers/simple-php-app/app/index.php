@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Simple application PHP</title>
+        <link rel="stylesheet" href="home.css"/>
         <meta charset="utf-8">
     </head>
     <body>
@@ -10,6 +11,8 @@
         <?php
           echo "<h3> Liste de présence du ".date('Y/m/d')."<h3>";
         ?>
+        
+        <img src='./images/download.png'/>
         <table border='2'>
             <tr>
               <th>Prénom</th>
