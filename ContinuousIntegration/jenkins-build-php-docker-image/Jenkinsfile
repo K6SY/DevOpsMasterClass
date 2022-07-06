@@ -3,9 +3,11 @@ pipeline{
 
     stages
     {
-        stage('Information'){
+        stage('Build Image'){
             steps{
-                sh "echo 'This is my fisrt pipeline'"
+                dir("Containers/simple-php-app") {
+                    sh "docker build -t php-app:1.0.0 ."
+                }
             }
         }
     }
