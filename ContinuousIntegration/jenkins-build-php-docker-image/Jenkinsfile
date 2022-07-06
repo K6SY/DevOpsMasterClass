@@ -10,6 +10,23 @@ pipeline{
                 }
             }
         }
+        stage('Prepare Environement') {
+            steps
+            {
+                script {
+                    containerName = sh(returnStdout: true, script: "docker ps -a -f 'name=container-test' --format '{{.Names}}'").trim()
+                    if(containerName == "container-test")
+                    {
+                        sh 'docker rm container-test --force'
+                        sh "echo 'Nettoyage environnement OK'"
+                    }
+                    else
+                    {
+                        sh "echo 'Environnement OK'"
+                    }
+                }
+            }
+        }
         stage('Run container'){
             steps{
                 sh "docker run -d -p 8008:80 --name container-test php-app:1.0.0"
