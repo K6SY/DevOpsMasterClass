@@ -3,7 +3,7 @@ pipeline{
 
     stages
     {
-        stage{
+        stage('Information'){
             steps{
                 sh "echo 'This is my fisrt pipeline'"
             }
