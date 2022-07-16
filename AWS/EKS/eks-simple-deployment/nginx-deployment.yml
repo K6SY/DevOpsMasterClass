@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    usage: lab-eks
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      usage: lab-eks
+  template:
+    metadata:
+      labels:
+        usage: lab-eks
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
