@@ -6,12 +6,12 @@ services:
       context: ./app
       dockerfile: Dockerfile
     depends_on:
-      - database
+      - database-environment
     volumes:
       - ./app:/var/www/html/
     ports:
       - 8000:80
-  database:
+  database-environment:
     container_name: database
     image: mysql:8.0
     restart: always
@@ -22,3 +22,12 @@ services:
         MYSQL_PASSWORD: MYSQL_PASSWORD
     ports:
         - "9906:3306"
+  phpmyadmin:
+    image: phpmyadmin:5.2.0-apache
+    ports:
+        - '8008:80'
+    restart: always
+    environment:
+        PMA_HOST: database
+    depends_on:
+        - database-environment

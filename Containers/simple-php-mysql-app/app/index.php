@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>Simple application PHP</title>
+        <link rel="stylesheet" href="home.css"/>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>A simple PHP application for Devops Training</h1>
+        <h1>Ceci est une nouvelle modification. A simple PHP application for Devops Training</h1>
         <hr>
         <?php
           //These are the defined authentication environment in the db service
