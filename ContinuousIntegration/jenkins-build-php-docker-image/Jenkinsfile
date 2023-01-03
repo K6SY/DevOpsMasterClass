@@ -1,0 +1,42 @@
+pipeline{
+    agent any
+
+
+    stages
+    {
+        stage('Build Image'){
+            steps{
+                dir("Containers/simple-php-app") {
+                    sh "docker build -t php-app:1.0.0 ."
+                }
+            }
+        }
+        stage('Prepare Environement') {
+            steps
+            {
+                script {
+                    containerName = sh(returnStdout: true, script: "docker ps -a -f 'name=container-test' --format '{{.Names}}'").trim()
+                    if(containerName == "container-test")
+                    {
+                        sh 'docker rm container-test --force'
+                        sh "echo 'Nettoyage environnement OK'"
+                    }
+                    else
+                    {
+                        sh "echo 'Environnement OK'"
+                    }
+                }
+            }
+        }
+        stage('Run container'){
+            steps{
+                sh "docker run -d -p 8008:80 --name container-test php-app:1.0.0"
+            }
+        }
+    }
+    post {
+        success {
+            slackSend message:"A new version of php-app image is succesful build - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+    }
+}
