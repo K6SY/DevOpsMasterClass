@@ -1,7 +1,5 @@
 pipeline{
     agent any
-
-
     stages
     {
         stage('Build Image'){
@@ -32,11 +30,6 @@ pipeline{
             steps{
                 sh "docker run -d -p 8008:80 --name container-test php-app:1.0.0"
             }
-        }
-    }
-    post {
-        success {
-            slackSend message:"A new version of php-app image is succesful build - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
         }
     }
 }
