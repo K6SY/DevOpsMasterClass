@@ -1,6 +1,5 @@
 FROM jenkins/jenkins
 USER root
-ENV HOST_DOCKER=/var/run/docker.sock
 RUN apt-get update -y && \
  apt-get install -y ca-certificates curl gnupg lsb-release && \
  mkdir -p /etc/apt/keyrings && \
@@ -11,3 +10,4 @@ RUN apt-get update -y && \
  apt-get update -y && \
  apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 USER jenkins
+ENV HOST_DOCKER=/var/run/docker.sock
