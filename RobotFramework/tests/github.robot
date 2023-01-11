@@ -7,10 +7,15 @@ Library           Selenium2Library
 *** Variables ***
 ${URL}  https://github.com/
 ${Signin Button Locator}  xpath: //*[contains(text(), "Sign in")]
+${username}   k6sy
+${password}   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
+${username location}  xpath: //*[@id="login_field"]
+${password location}  xpath: //*[@id="password"]
+${connect location}  xpath: //*[@name="commit"]
 
 *** Keywords ***
 !SuiteSetup
-    Open Browser    about:blank   ff
+    Open Browser    about:blank   chrome
     Sleep  2s
     
 !SuiteTeardown
@@ -21,6 +26,15 @@ Check Availability
     Click Element  ${Signin Button Locator}
     Sleep  5s
 
+authentification
+    Input Text   ${username location}   ${username}
+    Sleep  1s
+    Input Text   ${password location}   ${password}
+    Sleep  1s
+    Click Element  ${connect location}
+    Sleep  2s
+
+
 *** Test Cases ***
 01_homepage
     [Documentation]    Test d'accès à Github
@@ -30,6 +44,12 @@ Check Availability
 
 02_navigation
     [Documentation]    Test Vérification formulaire authentification
-    Sleep  5s
+    Sleep  3s
     Check Availability
     Wait Until Page Contains    Username    timeout=10
+
+03_connexion
+    [Documentation]    Test authentification
+    Sleep  3s
+    authentification
+    Sleep  3s
