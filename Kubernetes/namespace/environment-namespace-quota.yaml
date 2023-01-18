@@ -1,0 +1,18 @@
+#Quota define number of pod that can run on namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: quota-example
+
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: pod-demo
+  namespace: quota-example
+spec:
+  hard:
+    pods: "1"
+
+#kubectl run quotapod1 --image=nginx -n quota-example
+#kubectl run quotapod2 --image=nginx -n quota-example

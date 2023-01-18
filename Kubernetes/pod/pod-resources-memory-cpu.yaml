@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-resources-memory-cpu
+spec:
+  containers:
+  - name: pod-resources-memory-cpu-ctr
+    image: nginx
+    resources:
+      limits:
+        memory: "250Mi"
+        cpu: 0.5
+      requests:
+        memory: "128Mi"
+        cpu: 0.25
+
+#kubectl create -f pod/pod-resources-memory-cpu.yaml
+#kubectl get pod pod-resources-memory-cpu -o yaml
+#kubectl delete -f pod/pod-resources-memory-cpu.yaml

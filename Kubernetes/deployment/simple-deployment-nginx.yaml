@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.23.3
+        ports:
+        - containerPort: 80
+
+#kubectl create -f deployment/simple-deployment-nginx.yaml
+#kubectl get replicaset
+#kubectl get pod
+#kubectl rollout status deployment/nginx-deployment
+#kubectl get pods --show-labels
+#kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
+#kubectl edit deployment/nginx-deployment
+#kubectl rollout history deployment/nginx-deployment
+#kubectl scale deployment/nginx-deployment --replicas=3
+
+
+#https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment
+

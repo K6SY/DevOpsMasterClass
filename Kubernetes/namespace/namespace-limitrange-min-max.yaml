@@ -1,0 +1,64 @@
+#Request: Ce que demande un pod / Limit: Ce qu'il ne peut pas dépasser
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: limit-range-min-max-namespace
+
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limit-range-min-max
+  namespace: limit-range-min-max-namespace
+spec:
+  limits:
+  - default:
+      cpu: 1
+      memory: 512Mi
+    defaultRequest:
+      cpu: 0.5
+      memory: 256Mi
+    max:
+      memory: 1Gi
+      cpu: 1.2
+    min:
+      memory: 500Mi
+      cpu: 0.1
+    type: Container
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-imit-range-min-max-po
+  namespace: limit-range-min-max-namespace
+spec:
+  containers:
+  - name: default-memory-cpu-demo-ctr
+    image: nginx
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-imit-range-min-max-po-execeed
+  namespace: limit-range-min-max-namespace
+spec:
+  containers:
+  - name: default-memory-cpu-demo-ctr-execeed
+    image: nginx
+    resources:
+      limits:
+        memory: "800Mi"
+        cpu: "1500mi"
+      requests:
+        memory: "600Mi"
+        cpu: "1300mi"
+
+
+
+
+#https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu
+#https://kubernetes.io/docs/concepts/policy/limit-range/
+#kubectl get limitrange -n memory-cpu-request-limit-namespace -o yaml
+#kubectl get pod/default-memory-cpu-po -n memory-cpu-request-limit-namespace -o yaml

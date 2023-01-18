@@ -1,0 +1,38 @@
+#Request: Ce que demande un pod / Limit: Ce qu'il ne peut pas dépasser
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: memory-request-limit-namespace
+
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-limit-range
+  namespace: memory-request-limit-namespace
+spec:
+  limits:
+  - default:
+      memory: 512Mi
+    defaultRequest:
+      memory: 256Mi
+    type: Container
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: default-mem-po
+  namespace: memory-request-limit-namespace
+spec:
+  containers:
+  - name: default-mem-demo-ctr
+    image: nginx
+
+
+
+
+#https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory
+#https://kubernetes.io/docs/concepts/policy/limit-range/
+#kubectl get limitrange -n memory-request-limit-namespace -o yaml
+#kubectl get pod default-mem-po -n memory-request-limit-namespace -o yaml
