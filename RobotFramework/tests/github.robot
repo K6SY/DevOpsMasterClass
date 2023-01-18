@@ -7,8 +7,8 @@ Library           Selenium2Library
 *** Variables ***
 ${URL}  https://github.com/
 ${Signin Button Locator}  xpath: //*[contains(text(), "Sign in")]
-${username}   k6sy
-${password}   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
+${username}   test
+${password}   test
 ${username location}  xpath: //*[@id="login_field"]
 ${password location}  xpath: //*[@id="password"]
 ${connect location}  xpath: //*[@name="commit"]
