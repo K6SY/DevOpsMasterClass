@@ -6,3 +6,4 @@ metadata:
 #kubectl create namespace devops-master-class
 #kubectl delete namespaces devops-master-class
 #kubectl get namespaces
+#kubectl create -f namespace/simple-namespace.yaml
