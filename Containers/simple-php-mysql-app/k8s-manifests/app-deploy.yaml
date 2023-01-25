@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-php-app
+  namespace: devops-k8s-example
+  labels:
+    app: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+      namespace: devops-k8s-example
+    spec:
+      containers:
+      - name: my-php-app
+        image: kalidousy/my-php-app:1.0.1
+        env:
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mydbsecret
+              key: USERNAME
+        - name: DATABASE_HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              name: mydbsecret
+              key: HOSTNAME
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mydbsecret
+              key: PASSWORD

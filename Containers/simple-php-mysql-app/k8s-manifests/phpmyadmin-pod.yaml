@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pmapod
+  namespace: devops-k8s-example
+  labels:
+    app: pma
+
+spec:
+  containers:
+  - name: pmapod
+    image: phpmyadmin:5.2.0
+    env:
+      - name: PMA_HOST
+        valueFrom:
+          secretKeyRef:
+            name: mydbsecret
+            key: HOSTNAME
+  restartPolicy: Never
