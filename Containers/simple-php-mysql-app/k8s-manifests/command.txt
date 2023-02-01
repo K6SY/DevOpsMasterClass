@@ -1,0 +1,42 @@
+- Création d'un cluster minikube : minikube start
+- Définir un alias pour kubectl: alias k='kubectl'
+- Chiffer un texte en base 64: echo -n 'myapp-user' | base64
+- Définir un alias pour kubectl avec un namespace spécifique: alias k="kubectl -n devops-k8s-example"
+- Obtenir l'URL d'accès d'un service de type NodePort avec minikube: minikube service -n devops-k8s-example appservice --url
+
+
+- Afficher les nodes d'un cluster: kubectl get node
+- Afficher les namespaces d'un cluster: kubectl get ns
+- Afficher les pods de l'ensemble des namespaces: kubectl get po -A
+- Executer un pod avec kubectl: kubectl run firstPod --image=simple-html --port=80
+- Supprimer un pod: kubectl delete pod firstpod
+- Descrire un pod: kubectl describe pod firstpod
+- Création d'une ressource à partir d'un manifest: kubectl create -f simple-pod-nginx.yaml 
+- Supprimer un namespace: kubectl delete namespace quota-pod-example
+- Supprimer une ressouce à partir d'un manifest: kubectl delete -f simple-pod-nginx.yaml 
+- Lister les pods du namespace default: kubectl get pod
+- Lister les pods du namespace alpha: kubectl get pod -n alpha
+- Lister les replicaset du namespace defaut: kubectl get replicset
+- Lister les replicaset du namespace alpha: kubectl get replicset -n alpha
+- Lister les deployment du namespace defaut: kubectl get deployment
+- Lister les deployment du namespace alpha: kubectl get deployment -n alpha
+- Afficher le statut d'un rollout: kubectl rollout status nginx-deployment
+- Afficher l'historique d'un rollout: kubectl rollout history deployment/nginx-deployment
+- Lister les secrets: kubectl get secret
+- Afficher les détails d'un secret: k describe secret mydbsecret
+- Afficher la liste des pods avec les labels: kubectl get pod --show-labels
+- Supprimer un pod: kubectl delete pod my-php-app-68cc7495c-xmd76
+- Appliquer les mises à jour d'une ressources à partir d'un manifest: kubectl apply -f app-deploy.yaml 
+- Se connecter en SSH sur un pod: kubectl exec -it my-php-app-bdcb564bc-vww6j -n devops-k8s-example -- /bin/bash
+- Afficher les logs d'un pods: kubectl logs my-php-app-bdcb564bc-dsk6v -n devops-k8s-example
+- Afficher les logs d'un pod en continu : kubectl logs my-php-app-bdcb564bc-dsk6v -n devops-k8s-example -f
+
+
+
+- Afficher la liste des images docker: docker images
+- taguer une image docker: docker tag my-php-app:1.0.0 kalidousy/my-php-app:1.0.0 
+- pusher une image docker sur dockerHub: docker push kalidousy/my-php-app:1.0.0
+- S'authentifer avec Docker: docker login
+- Builder une image docker: docker build -t kalidousy/my-php-app:1.0.0 .
+- Suppression d'une image docker: docker rmi kalidousy/my-php-app:1.0.0
+

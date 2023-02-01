@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysqlpod
+  namespace: devops-k8s-example
+  labels:
+    app: mysql
+
+spec:
+  containers:
+  - name: mysqlpod
+    image: mysql:8.0.32
+    env:
+      - name: MYSQL_ROOT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mydbsecret
+            key: ROOTPASSWORD
+      - name: MYSQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mydbsecret
+            key: PASSWORD
+      - name: MYSQL_USER
+        valueFrom:
+          secretKeyRef:
+            name: mydbsecret
+            key: USERNAME
+  restartPolicy: Never
