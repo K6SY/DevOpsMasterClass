@@ -17,7 +17,7 @@ pipeline {
                     if(containerName == "test-container")
                     {
                         sh 'docker rm test-container --force'
-                        sh "echo 'Nettoyage environnement OK !'"
+                        sh "echo 'Nettoyage environnement OK'"
                     }
                     else
                     {
