@@ -5,7 +5,7 @@ pipeline{
         stage('Build Image'){
             steps{
                 dir("Containers/simple-php-app") {
-                    sh "docker build -t php-app:1.0.0 ."
+                    sh "docker build -t php-app:1.0.$BUILD_NUMBER ."
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline{
         }
         stage('Run container'){
             steps{
-                sh "docker run -d -p 8008:80 --name container-test php-app:1.0.0"
+                sh "docker run -d -p 8008:80 --name container-test php-app:1.0.$BUILD_NUMBER"
             }
         }
     }
