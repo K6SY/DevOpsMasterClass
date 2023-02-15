@@ -36,7 +36,7 @@ RUN ln -s /etc/uwsgi/apps-available/uwsgi.ini /etc/uwsgi/apps-enabled/uwsgi.ini
 COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN touch /var/log/supervisor/supervisord.log 
 
-EXPOSE 8080:8080
+EXPOSE 8080
 
 # setup entrypoint
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh

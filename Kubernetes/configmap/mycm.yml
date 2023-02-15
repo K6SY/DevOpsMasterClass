@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycm
+data:
+  security.yaml: |
+    enemy.types=aliens,monsters
+    player.maximum-lives=5

@@ -22,6 +22,8 @@ services:
         MYSQL_PASSWORD: MYSQL_PASSWORD
     ports:
         - "9906:3306"
+    volumes:
+        - ./app/request.sql:/docker-entrypoint-initdb.d/request.sql
   phpmyadmin:
     image: phpmyadmin:5.2.0-apache
     ports:
