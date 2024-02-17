@@ -7,7 +7,7 @@ COPY requirements.txt ${HOME}/src/requirements.txt
 
 USER root
 
-RUN sed -i 's/stable\/updates/stable-security\/updates/' /etc/apt/sources.list
+#RUN sed -i 's/stable\/updates/stable-security\/updates/' /etc/apt/sources.list
 
 # install python, uwsgi, and supervisord
 RUN apt-get update &&  apt-get install -y supervisor uwsgi python3 python3-pip uwsgi-plugin-python3 vim
