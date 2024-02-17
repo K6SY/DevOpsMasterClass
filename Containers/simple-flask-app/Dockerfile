@@ -1,5 +1,5 @@
 # Use the standard Nginx image from Docker Hub
-FROM nginx:1.20
+FROM nginx:1.25.4
 
 ENV HOME=/opt/repo
 
